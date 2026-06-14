@@ -55,7 +55,6 @@ body {
 .links-menu a:hover {
   color: #d7ff9f;
 }
-
 .hero {
   min-height: 78vh;
   padding: 80px 20px;
@@ -63,10 +62,10 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    linear-gradient(rgba(10, 45, 20, 0.70), rgba(10, 45, 20, 0.70)),
+    linear-gradient(rgba(10, 45, 20, 0.45), rgba(10, 45, 20, 0.45)),
     url("../assets/projeto.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   color: white;
   text-align: center;
@@ -92,9 +91,9 @@ body {
   line-height: 1.1;
 }
 
+.hero h2,
 .hero p {
-  font-size: 1.2rem;
-  margin-bottom: 28px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.75);
 }
 
 .botao-principal,
