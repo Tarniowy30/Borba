@@ -106,11 +106,26 @@ document.addEventListener("DOMContentLoaded", function () {
     resultadoSimulador.className = "resultado " + resultado.classe;
 
     resultadoSimulador.innerHTML = `
-      <strong>Índice de sustentabilidade:</strong> ${media}%<br>
-      <strong>Classificação:</strong> ${resultado.nome}<br>
-      <strong>Impacto ambiental:</strong> ${resultado.impacto}<br>
-      <strong>Economia de recursos:</strong> ${resultado.economia}<br>
-      <strong>Recomendação:</strong> ${resultado.recomendacao}
+  <strong>Índice de sustentabilidade:</strong> ${media}%<br>
+  <strong>Classificação:</strong> ${resultado.nome}<br>
+  <strong>Impacto ambiental:</strong> ${resultado.impacto}<br>
+  <strong>Economia de recursos:</strong> ${resultado.economia}<br>
+  <strong>Recomendação:</strong> ${resultado.recomendacao}
+
+  <div class="medidor-sustentabilidade">
+    <div class="barra-sustentabilidade" style="width: ${media}%;"></div>
+  </div>
+
+  <span class="selo-resultado">
+    Fazenda com sustentabilidade ${resultado.nome}
+  </span>
+
+  <div class="check-final">
+    <strong>Resumo:</strong><br>
+    Quanto maior o equilíbrio entre água, energia limpa, preservação, tecnologia,
+    solo e redução de agrotóxicos, maior será o potencial sustentável da fazenda.
+  </div>
+`;
     `;
   }
 
