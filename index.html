@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projeto Agrinho 2026 sobre agricultura sustentável, tecnologias do campo e economia de água.">
+  <title>Agrinho 2026 - Agro Forte, Futuro Sustentável</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#tecnologia">Tecnologia</a>
+    <a href="#impacto">Impacto</a>
+    <a href="#calculadora">Calculadora</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
+
+  <header>
+    <h1>🌱 AGRINHO 2026</h1>
+    <h2>Agro Forte, Futuro Sustentável</h2>
+    <p>Produzir mais, preservar melhor e construir um futuro sustentável.</p>
+    <a class="hero-btn" href="#sobre">Explorar Projeto</a>
+  </header>
+
+  <main>
+    <section id="sobre">
+      <h2>O Agro e o Meio Ambiente</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>🌳 Preservação</h3>
+          <p>Manter matas e rios protegidos garante biodiversidade e qualidade de vida.</p>
+        </div>
+
+        <div class="card">
+          <h3>💧 Economia de Água</h3>
+          <p>Sistemas modernos de irrigação reduzem desperdícios.</p>
+        </div>
+
+        <div class="card">
+          <h3>☀️ Energia Limpa</h3>
+          <p>Painéis solares ajudam a reduzir custos e emissões.</p>
+        </div>
+
+        <div class="card">
+          <h3>🚜 Tecnologia</h3>
+          <p>Drones e sensores aumentam a produtividade sustentável.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tecnologia">
+      <h2>Tecnologias no Campo</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Drones</h3>
+          <p>Monitoram plantações e identificam problemas rapidamente.</p>
+        </div>
+
+        <div class="card">
+          <h3>GPS Agrícola</h3>
+          <p>Aumenta a precisão do plantio e da colheita.</p>
+        </div>
+
+        <div class="card">
+          <h3>Inteligência Artificial</h3>
+          <p>Ajuda produtores a tomar decisões mais eficientes.</p>
+        </div>
+
+        <div class="card">
+          <h3>Sensores</h3>
+          <p>Medem umidade, temperatura e condições do solo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="impacto">
+      <h2>Benefícios da Sustentabilidade</h2>
+
+      <div class="stats">
+        <div class="stat">
+          <h1>30%</h1>
+          <p>Menos desperdício de água</p>
+        </div>
+
+        <div class="stat">
+          <h1>25%</h1>
+          <p>Maior eficiência energética</p>
+        </div>
+
+        <div class="stat">
+          <h1>40%</h1>
+          <p>Redução de impactos ambientais</p>
+        </div>
+
+        <div class="stat">
+          <h1>100%</h1>
+          <p>Compromisso com o futuro</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculadora">
+      <h2>Calculadora de Economia de Água</h2>
+
+      <div class="quiz">
+        <p>
+          <label for="agua">Informe o consumo mensal em litros:</label>
+        </p>
+
+        <input type="number" id="agua" min="0" placeholder="Ex: 500" aria-describedby="resultado">
+
+        <button id="btnCalcular" type="button">Calcular Economia</button>
+
+        <h3 id="resultado" aria-live="polite"></h3>
+      </div>
+    </section>
+
+    <section id="quiz">
+      <h2>Quiz Agrinho</h2>
+
+      <div class="quiz">
+        <fieldset>
+          <legend><b>1.</b> Qual fonte é considerada energia limpa?</legend>
+
+          <label>
+            <input type="radio" name="q1" value="0">
+            Carvão
+          </label>
+          <br>
+
+          <label>
+            <input type="radio" name="q1" value="1">
+            Energia Solar
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend><b>2.</b> O que ajuda a economizar água?</legend>
+
+          <label>
+            <input type="radio" name="q2" value="1">
+            Irrigação eficiente
+          </label>
+          <br>
+
+          <label>
+            <input type="radio" name="q2" value="0">
+            Vazamentos
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend><b>3.</b> Qual tecnologia monitora lavouras pelo ar?</legend>
+
+          <label>
+            <input type="radio" name="q3" value="1">
+            Drone
+          </label>
+          <br>
+
+          <label>
+            <input type="radio" name="q3" value="0">
+            Trator antigo
+          </label>
+        </fieldset>
+
+        <button id="btnCorrigirQuiz" type="button">Ver Resultado</button>
+
+        <h3 id="quizResultado" aria-live="polite"></h3>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projeto desenvolvido para o Concurso Agrinho 2026</p>
+    <p>Aluno: _____________________</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
