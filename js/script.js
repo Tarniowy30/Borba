@@ -40,6 +40,54 @@ document.addEventListener("DOMContentLoaded", function () {
       campo.valor.textContent = campo.input.value;
     });
   }
+  const btnEventoSurpresa = document.getElementById("btnEventoSurpresa");
+const eventoSurpresa = document.getElementById("eventoSurpresa");
+
+const eventosDoCampo = [
+  {
+    titulo: "Seca prolongada",
+    texto:
+      "A fazenda enfrentou um período de pouca chuva. A irrigação inteligente e o uso consciente da água serão essenciais."
+  },
+  {
+    titulo: "Chuva forte",
+    texto:
+      "A propriedade recebeu chuva intensa. A cobertura vegetal e o cuidado com o solo ajudam a evitar erosão."
+  },
+  {
+    titulo: "Aparecimento de pragas",
+    texto:
+      "Foram encontrados sinais de pragas na plantação. O monitoramento com drones e sensores ajuda na identificação rápida."
+  },
+  {
+    titulo: "Energia solar em alta",
+    texto:
+      "Os painéis solares tiveram ótimo rendimento. A fazenda economizou energia e reduziu impactos ambientais."
+  },
+  {
+    titulo: "Sensor detectou solo seco",
+    texto:
+      "Os sensores indicaram baixa umidade no solo. A tecnologia ajuda o produtor a agir antes que a produção seja prejudicada."
+  },
+  {
+    titulo: "Mutirão de preservação",
+    texto:
+      "A comunidade ajudou a recuperar uma área de mata. A preservação fortalece o equilíbrio entre produção e meio ambiente."
+  }
+];
+
+function sortearEventoSurpresa() {
+  const numeroSorteado = Math.floor(Math.random() * eventosDoCampo.length);
+  const evento = eventosDoCampo[numeroSorteado];
+
+  eventoSurpresa.className = "evento-destaque";
+  eventoSurpresa.innerHTML = `
+    <strong>Evento surpresa:</strong> ${evento.titulo}<br>
+    ${evento.texto}
+  `;
+}
+
+btnEventoSurpresa.addEventListener("click", sortearEventoSurpresa);
 
   campos.forEach(function (campo) {
     campo.input.addEventListener("input", atualizarValores);
