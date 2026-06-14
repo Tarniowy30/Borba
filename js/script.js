@@ -251,47 +251,221 @@ document.addEventListener("DOMContentLoaded", function () {
   const eventosDoCampo = [
     {
       titulo: "Seca prolongada",
-      texto:
-        "A fazenda enfrentou um período de pouca chuva. A irrigação inteligente e o uso consciente da água serão essenciais."
+      problema:
+        "A fazenda enfrentou um período de pouca chuva. O produtor precisa agir para economizar água.",
+      opcoes: [
+        {
+          texto: "Usar irrigação inteligente",
+          correta: true,
+          feedback:
+            "Boa escolha! A irrigação inteligente ajuda a economizar água e mantém a produção mesmo em períodos de seca."
+        },
+        {
+          texto: "Irrigar sem controle",
+          correta: false,
+          feedback:
+            "Essa decisão aumenta o desperdício de água. O ideal é controlar a irrigação de acordo com a necessidade do solo."
+        },
+        {
+          texto: "Ignorar a seca",
+          correta: false,
+          feedback:
+            "Ignorar o problema pode prejudicar a plantação. O produtor precisa monitorar a água e proteger o solo."
+        }
+      ]
     },
     {
       titulo: "Chuva forte",
-      texto:
-        "A propriedade recebeu chuva intensa. A cobertura vegetal e o cuidado com o solo ajudam a evitar erosão."
+      problema:
+        "A propriedade recebeu chuva intensa. Existe risco de erosão no solo.",
+      opcoes: [
+        {
+          texto: "Manter cobertura vegetal",
+          correta: true,
+          feedback:
+            "Boa decisão! A cobertura vegetal protege o solo e reduz os efeitos da erosão causada pela chuva."
+        },
+        {
+          texto: "Retirar toda a vegetação",
+          correta: false,
+          feedback:
+            "Essa escolha aumenta o risco de erosão. A vegetação ajuda a proteger a terra."
+        },
+        {
+          texto: "Deixar a água levar o solo",
+          correta: false,
+          feedback:
+            "Isso prejudica a fertilidade da terra. O cuidado com o solo é essencial para uma produção sustentável."
+        }
+      ]
     },
     {
       titulo: "Aparecimento de pragas",
-      texto:
-        "Foram encontrados sinais de pragas na plantação. O monitoramento com drones e sensores ajuda na identificação rápida."
+      problema:
+        "Foram encontrados sinais de pragas na plantação.",
+      opcoes: [
+        {
+          texto: "Monitorar com drones e sensores",
+          correta: true,
+          feedback:
+            "Excelente! A tecnologia ajuda a identificar o problema cedo e permite uma ação mais precisa."
+        },
+        {
+          texto: "Usar produtos sem controle",
+          correta: false,
+          feedback:
+            "O uso sem controle pode prejudicar o ambiente. O ideal é monitorar e agir com responsabilidade."
+        },
+        {
+          texto: "Não verificar a plantação",
+          correta: false,
+          feedback:
+            "Sem monitoramento, o problema pode crescer. Drones e sensores ajudam na prevenção."
+        }
+      ]
     },
     {
       titulo: "Energia solar em alta",
-      texto:
-        "Os painéis solares tiveram ótimo rendimento. A fazenda economizou energia e reduziu impactos ambientais."
+      problema:
+        "Os painéis solares tiveram ótimo rendimento durante a semana.",
+      opcoes: [
+        {
+          texto: "Aproveitar energia limpa",
+          correta: true,
+          feedback:
+            "Boa escolha! A energia solar reduz custos e diminui impactos ambientais na propriedade."
+        },
+        {
+          texto: "Desligar os painéis",
+          correta: false,
+          feedback:
+            "Essa decisão desperdiça uma oportunidade de usar energia limpa e econômica."
+        },
+        {
+          texto: "Ignorar a economia gerada",
+          correta: false,
+          feedback:
+            "Acompanhar os dados de energia ajuda o produtor a planejar melhor os custos da fazenda."
+        }
+      ]
     },
     {
       titulo: "Sensor detectou solo seco",
-      texto:
-        "Os sensores indicaram baixa umidade no solo. A tecnologia ajuda o produtor a agir antes que a produção seja prejudicada."
+      problema:
+        "Os sensores indicaram baixa umidade no solo.",
+      opcoes: [
+        {
+          texto: "Ajustar a irrigação conforme os dados",
+          correta: true,
+          feedback:
+            "Muito bem! Usar dados dos sensores permite irrigar na medida certa e evitar desperdício."
+        },
+        {
+          texto: "Regar sem verificar os dados",
+          correta: false,
+          feedback:
+            "Sem usar os dados, pode haver desperdício ou falta de água. A tecnologia ajuda na decisão correta."
+        },
+        {
+          texto: "Desconsiderar os sensores",
+          correta: false,
+          feedback:
+            "Os sensores ajudam a proteger a produção. Ignorar os dados pode prejudicar o cultivo."
+        }
+      ]
     },
     {
       titulo: "Mutirão de preservação",
-      texto:
-        "A comunidade ajudou a recuperar uma área de mata. A preservação fortalece o equilíbrio entre produção e meio ambiente."
+      problema:
+        "A comunidade se reuniu para recuperar uma área de mata próxima da propriedade.",
+      opcoes: [
+        {
+          texto: "Participar e preservar a mata",
+          correta: true,
+          feedback:
+            "Excelente decisão! A preservação fortalece o equilíbrio entre produção, natureza e comunidade."
+        },
+        {
+          texto: "Desmatar a área recuperada",
+          correta: false,
+          feedback:
+            "Essa escolha prejudica o meio ambiente. A mata ajuda a proteger água, solo e biodiversidade."
+        },
+        {
+          texto: "Não apoiar a preservação",
+          correta: false,
+          feedback:
+            "A participação da comunidade fortalece a sustentabilidade e melhora o futuro do campo."
+        }
+      ]
     }
   ];
+
+  let eventoAtual = null;
 
   function sortearEventoSurpresa() {
     if (!eventoSurpresa) return;
 
     const numeroSorteado = Math.floor(Math.random() * eventosDoCampo.length);
-    const evento = eventosDoCampo[numeroSorteado];
+    eventoAtual = eventosDoCampo[numeroSorteado];
 
     eventoSurpresa.className = "evento-destaque";
+
     eventoSurpresa.innerHTML = `
-      <strong>Evento surpresa:</strong> ${evento.titulo}<br>
-      ${evento.texto}
+      <strong>Missão Relâmpago do Campo</strong><br><br>
+      <strong>Evento surpresa:</strong> ${eventoAtual.titulo}<br>
+      ${eventoAtual.problema}
+      <br><br>
+      <strong>Qual decisão o produtor deve tomar?</strong>
+
+      <div class="opcoes-evento">
+        ${eventoAtual.opcoes
+          .map(function (opcao, index) {
+            return `
+              <button type="button" class="botao-secundario btnOpcaoEvento" data-index="${index}">
+                ${opcao.texto}
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
+
+      <div id="feedbackEvento" class="resultado">
+        Escolha uma decisão para ver o resultado.
+      </div>
     `;
+
+    const botoesOpcoes = document.querySelectorAll(".btnOpcaoEvento");
+
+    botoesOpcoes.forEach(function (botao) {
+      botao.addEventListener("click", function () {
+        const indice = Number(botao.getAttribute("data-index"));
+        responderMissao(indice);
+      });
+    });
+  }
+
+  function responderMissao(indice) {
+    if (!eventoAtual) return;
+
+    const feedbackEvento = document.getElementById("feedbackEvento");
+    const opcaoEscolhida = eventoAtual.opcoes[indice];
+
+    if (!feedbackEvento || !opcaoEscolhida) return;
+
+    if (opcaoEscolhida.correta) {
+      feedbackEvento.className = "resultado excelente";
+      feedbackEvento.innerHTML = `
+        <strong>Boa escolha!</strong><br>
+        ${opcaoEscolhida.feedback}
+      `;
+    } else {
+      feedbackEvento.className = "resultado regular";
+      feedbackEvento.innerHTML = `
+        <strong>Atenção!</strong><br>
+        ${opcaoEscolhida.feedback}
+      `;
+    }
   }
 
   if (btnEventoSurpresa && eventoSurpresa) {
