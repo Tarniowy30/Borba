@@ -63,8 +63,8 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    linear-gradient(rgba(10, 45, 20, 0.72), rgba(10, 45, 20, 0.72)),
-    url("../assets/fundo-agro.jpg");
+    linear-gradient(rgba(10, 45, 20, 0.70), rgba(10, 45, 20, 0.70)),
+    url("../assets/projeto.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
