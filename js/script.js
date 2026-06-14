@@ -1,11 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
   const campos = [
-    { input: document.getElementById("agua"), valor: document.getElementById("valorAgua") },
-    { input: document.getElementById("energia"), valor: document.getElementById("valorEnergia") },
-    { input: document.getElementById("mata"), valor: document.getElementById("valorMata") },
-    { input: document.getElementById("tecnologiaCampo"), valor: document.getElementById("valorTecnologia") },
-    { input: document.getElementById("solo"), valor: document.getElementById("valorSolo") },
-    { input: document.getElementById("agrotoxicos"), valor: document.getElementById("valorAgrotoxicos") }
+    {
+      input: document.getElementById("agua"),
+      valor: document.getElementById("valorAgua")
+    },
+    {
+      input: document.getElementById("energia"),
+      valor: document.getElementById("valorEnergia")
+    },
+    {
+      input: document.getElementById("mata"),
+      valor: document.getElementById("valorMata")
+    },
+    {
+      input: document.getElementById("tecnologiaCampo"),
+      valor: document.getElementById("valorTecnologia")
+    },
+    {
+      input: document.getElementById("solo"),
+      valor: document.getElementById("valorSolo")
+    },
+    {
+      input: document.getElementById("agrotoxicos"),
+      valor: document.getElementById("valorAgrotoxicos")
+    }
   ];
 
   const btnCalcular = document.getElementById("btnCalcular");
@@ -38,7 +56,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let soma = 0;
 
     campos.forEach(function (campo) {
-      soma += Number(campo.input.value);
+      if (campo.input) {
+        soma += Number(campo.input.value);
+      }
     });
 
     return Math.round(soma / campos.length);
@@ -92,6 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const media = calcularMedia();
     const resultado = definirClassificacao(media);
 
+    if (!resultadoSimulador) return;
+
     resultadoSimulador.className = "resultado " + resultado.classe;
 
     resultadoSimulador.innerHTML = `
@@ -122,14 +144,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const valoresIniciais = [60, 50, 55, 50, 60, 45];
 
     campos.forEach(function (campo, index) {
-      campo.input.value = valoresIniciais[index];
+      if (campo.input) {
+        campo.input.value = valoresIniciais[index];
+      }
     });
 
     atualizarValores();
 
-    resultadoSimulador.className = "resultado";
-    resultadoSimulador.innerHTML =
-      "Ajuste os valores e clique no botão para ver o resultado.";
+    if (resultadoSimulador) {
+      resultadoSimulador.className = "resultado";
+      resultadoSimulador.innerHTML =
+        "Ajuste os valores e clique no botão para ver o resultado.";
+    }
   }
 
   if (btnCalcular) {
@@ -158,6 +184,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     });
+
+    if (!resultadoQuiz) return;
 
     if (respondidas < perguntas.length) {
       resultadoQuiz.className = "resultado regular";
@@ -194,15 +222,22 @@ document.addEventListener("DOMContentLoaded", function () {
       🌱 A cobertura vegetal e a rotação de culturas protegem o solo.<br>
       🚁 Drones auxiliam no monitoramento das plantações.<br>
       🌎 Uma fazenda sustentável equilibra produção, tecnologia e preservação.
+
+      <div class="selo-final">
+        🏅 Selo conquistado: Guardião do Agro Sustentável
+      </div>
     `;
   }
 
   function limparQuiz() {
-    formQuiz.reset();
+    if (formQuiz) {
+      formQuiz.reset();
+    }
 
-    resultadoQuiz.className = "resultado";
-    resultadoQuiz.innerHTML =
-      "Responda às perguntas e clique em corrigir.";
+    if (resultadoQuiz) {
+      resultadoQuiz.className = "resultado";
+      resultadoQuiz.innerHTML = "Responda às perguntas e clique em corrigir.";
+    }
   }
 
   if (btnCorrigirQuiz) {
@@ -247,6 +282,8 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   function sortearEventoSurpresa() {
+    if (!eventoSurpresa) return;
+
     const numeroSorteado = Math.floor(Math.random() * eventosDoCampo.length);
     const evento = eventosDoCampo[numeroSorteado];
 
