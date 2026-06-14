@@ -1,29 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   const campos = [
-    {
-      input: document.getElementById("agua"),
-      valor: document.getElementById("valorAgua")
-    },
-    {
-      input: document.getElementById("energia"),
-      valor: document.getElementById("valorEnergia")
-    },
-    {
-      input: document.getElementById("mata"),
-      valor: document.getElementById("valorMata")
-    },
-    {
-      input: document.getElementById("tecnologiaCampo"),
-      valor: document.getElementById("valorTecnologia")
-    },
-    {
-      input: document.getElementById("solo"),
-      valor: document.getElementById("valorSolo")
-    },
-    {
-      input: document.getElementById("agrotoxicos"),
-      valor: document.getElementById("valorAgrotoxicos")
-    }
+    { input: document.getElementById("agua"), valor: document.getElementById("valorAgua") },
+    { input: document.getElementById("energia"), valor: document.getElementById("valorEnergia") },
+    { input: document.getElementById("mata"), valor: document.getElementById("valorMata") },
+    { input: document.getElementById("tecnologiaCampo"), valor: document.getElementById("valorTecnologia") },
+    { input: document.getElementById("solo"), valor: document.getElementById("valorSolo") },
+    { input: document.getElementById("agrotoxicos"), valor: document.getElementById("valorAgrotoxicos") }
   ];
 
   const btnCalcular = document.getElementById("btnCalcular");
@@ -35,62 +17,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultadoQuiz = document.getElementById("resultadoQuiz");
   const formQuiz = document.getElementById("formQuiz");
 
+  const btnEventoSurpresa = document.getElementById("btnEventoSurpresa");
+  const eventoSurpresa = document.getElementById("eventoSurpresa");
+
   function atualizarValores() {
     campos.forEach(function (campo) {
-      campo.valor.textContent = campo.input.value;
+      if (campo.input && campo.valor) {
+        campo.valor.textContent = campo.input.value;
+      }
     });
   }
-  const btnEventoSurpresa = document.getElementById("btnEventoSurpresa");
-const eventoSurpresa = document.getElementById("eventoSurpresa");
-
-const eventosDoCampo = [
-  {
-    titulo: "Seca prolongada",
-    texto:
-      "A fazenda enfrentou um período de pouca chuva. A irrigação inteligente e o uso consciente da água serão essenciais."
-  },
-  {
-    titulo: "Chuva forte",
-    texto:
-      "A propriedade recebeu chuva intensa. A cobertura vegetal e o cuidado com o solo ajudam a evitar erosão."
-  },
-  {
-    titulo: "Aparecimento de pragas",
-    texto:
-      "Foram encontrados sinais de pragas na plantação. O monitoramento com drones e sensores ajuda na identificação rápida."
-  },
-  {
-    titulo: "Energia solar em alta",
-    texto:
-      "Os painéis solares tiveram ótimo rendimento. A fazenda economizou energia e reduziu impactos ambientais."
-  },
-  {
-    titulo: "Sensor detectou solo seco",
-    texto:
-      "Os sensores indicaram baixa umidade no solo. A tecnologia ajuda o produtor a agir antes que a produção seja prejudicada."
-  },
-  {
-    titulo: "Mutirão de preservação",
-    texto:
-      "A comunidade ajudou a recuperar uma área de mata. A preservação fortalece o equilíbrio entre produção e meio ambiente."
-  }
-];
-
-function sortearEventoSurpresa() {
-  const numeroSorteado = Math.floor(Math.random() * eventosDoCampo.length);
-  const evento = eventosDoCampo[numeroSorteado];
-
-  eventoSurpresa.className = "evento-destaque";
-  eventoSurpresa.innerHTML = `
-    <strong>Evento surpresa:</strong> ${evento.titulo}<br>
-    ${evento.texto}
-  `;
-}
-
-btnEventoSurpresa.addEventListener("click", sortearEventoSurpresa);
 
   campos.forEach(function (campo) {
-    campo.input.addEventListener("input", atualizarValores);
+    if (campo.input) {
+      campo.input.addEventListener("input", atualizarValores);
+    }
   });
 
   function calcularMedia() {
@@ -154,26 +95,26 @@ btnEventoSurpresa.addEventListener("click", sortearEventoSurpresa);
     resultadoSimulador.className = "resultado " + resultado.classe;
 
     resultadoSimulador.innerHTML = `
-  <strong>Índice de sustentabilidade:</strong> ${media}%<br>
-  <strong>Classificação:</strong> ${resultado.nome}<br>
-  <strong>Impacto ambiental:</strong> ${resultado.impacto}<br>
-  <strong>Economia de recursos:</strong> ${resultado.economia}<br>
-  <strong>Recomendação:</strong> ${resultado.recomendacao}
+      <strong>Índice de sustentabilidade:</strong> ${media}%<br>
+      <strong>Classificação:</strong> ${resultado.nome}<br>
+      <strong>Impacto ambiental:</strong> ${resultado.impacto}<br>
+      <strong>Economia de recursos:</strong> ${resultado.economia}<br>
+      <strong>Recomendação:</strong> ${resultado.recomendacao}
 
-  <div class="medidor-sustentabilidade">
-    <div class="barra-sustentabilidade" style="width: ${media}%;"></div>
-  </div>
+      <div class="medidor-sustentabilidade">
+        <div class="barra-sustentabilidade" style="width: ${media}%;"></div>
+      </div>
 
-  <span class="selo-resultado">
-    Fazenda com sustentabilidade ${resultado.nome}
-  </span>
+      <span class="selo-resultado">
+        Fazenda com sustentabilidade ${resultado.nome}
+      </span>
 
-  <div class="check-final">
-    <strong>Resumo:</strong><br>
-    Quanto maior o equilíbrio entre água, energia limpa, preservação, tecnologia,
-    solo e redução de agrotóxicos, maior será o potencial sustentável da fazenda.
-  </div>
-`;
+      <div class="check-final">
+        <strong>Resumo:</strong><br>
+        Quanto maior o equilíbrio entre água, energia limpa, preservação,
+        tecnologia, solo e redução de agrotóxicos, maior será o potencial
+        sustentável da fazenda.
+      </div>
     `;
   }
 
@@ -191,8 +132,13 @@ btnEventoSurpresa.addEventListener("click", sortearEventoSurpresa);
       "Ajuste os valores e clique no botão para ver o resultado.";
   }
 
-  btnCalcular.addEventListener("click", calcularSustentabilidade);
-  btnResetar.addEventListener("click", resetarSimulador);
+  if (btnCalcular) {
+    btnCalcular.addEventListener("click", calcularSustentabilidade);
+  }
+
+  if (btnResetar) {
+    btnResetar.addEventListener("click", resetarSimulador);
+  }
 
   function corrigirQuiz() {
     const perguntas = ["q1", "q2", "q3", "q4", "q5", "q6"];
@@ -259,8 +205,61 @@ btnEventoSurpresa.addEventListener("click", sortearEventoSurpresa);
       "Responda às perguntas e clique em corrigir.";
   }
 
-  btnCorrigirQuiz.addEventListener("click", corrigirQuiz);
-  btnLimparQuiz.addEventListener("click", limparQuiz);
+  if (btnCorrigirQuiz) {
+    btnCorrigirQuiz.addEventListener("click", corrigirQuiz);
+  }
+
+  if (btnLimparQuiz) {
+    btnLimparQuiz.addEventListener("click", limparQuiz);
+  }
+
+  const eventosDoCampo = [
+    {
+      titulo: "Seca prolongada",
+      texto:
+        "A fazenda enfrentou um período de pouca chuva. A irrigação inteligente e o uso consciente da água serão essenciais."
+    },
+    {
+      titulo: "Chuva forte",
+      texto:
+        "A propriedade recebeu chuva intensa. A cobertura vegetal e o cuidado com o solo ajudam a evitar erosão."
+    },
+    {
+      titulo: "Aparecimento de pragas",
+      texto:
+        "Foram encontrados sinais de pragas na plantação. O monitoramento com drones e sensores ajuda na identificação rápida."
+    },
+    {
+      titulo: "Energia solar em alta",
+      texto:
+        "Os painéis solares tiveram ótimo rendimento. A fazenda economizou energia e reduziu impactos ambientais."
+    },
+    {
+      titulo: "Sensor detectou solo seco",
+      texto:
+        "Os sensores indicaram baixa umidade no solo. A tecnologia ajuda o produtor a agir antes que a produção seja prejudicada."
+    },
+    {
+      titulo: "Mutirão de preservação",
+      texto:
+        "A comunidade ajudou a recuperar uma área de mata. A preservação fortalece o equilíbrio entre produção e meio ambiente."
+    }
+  ];
+
+  function sortearEventoSurpresa() {
+    const numeroSorteado = Math.floor(Math.random() * eventosDoCampo.length);
+    const evento = eventosDoCampo[numeroSorteado];
+
+    eventoSurpresa.className = "evento-destaque";
+    eventoSurpresa.innerHTML = `
+      <strong>Evento surpresa:</strong> ${evento.titulo}<br>
+      ${evento.texto}
+    `;
+  }
+
+  if (btnEventoSurpresa && eventoSurpresa) {
+    btnEventoSurpresa.addEventListener("click", sortearEventoSurpresa);
+  }
 
   atualizarValores();
 });
