@@ -63,8 +63,11 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(circle at top left, rgba(255, 204, 41, 0.35), transparent 35%),
-    linear-gradient(135deg, #174921, #2e7d32, #7fa650);
+    linear-gradient(rgba(10, 45, 20, 0.72), rgba(10, 45, 20, 0.72)),
+    url("../assets/fundo-agro.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   text-align: center;
 }
