@@ -1,8 +1,3 @@
-/* ===============================
-   Projeto Borba - Agrinho 2026
-   CSS principal
-================================ */
-
 * {
   margin: 0;
   padding: 0;
@@ -19,10 +14,6 @@ body {
   color: #1f2d1f;
   line-height: 1.6;
 }
-
-/* ===============================
-   TOPO / MENU
-================================ */
 
 .topo {
   width: 100%;
@@ -41,19 +32,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 18px;
 }
 
 .logo {
   font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
+  font-weight: 900;
 }
 
 .links-menu {
   list-style: none;
   display: flex;
-  gap: 18px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
@@ -61,16 +51,11 @@ body {
   color: white;
   text-decoration: none;
   font-weight: 700;
-  transition: 0.3s;
 }
 
 .links-menu a:hover {
   color: #d7ff9f;
 }
-
-/* ===============================
-   HERO / INÍCIO
-================================ */
 
 .hero {
   min-height: 78vh;
@@ -79,10 +64,8 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    linear-gradient(rgba(20, 70, 30, 0.82), rgba(20, 70, 30, 0.82)),
-    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=80");
-  background-size: cover;
-  background-position: center;
+    radial-gradient(circle at top left, rgba(255, 204, 41, 0.35), transparent 35%),
+    linear-gradient(135deg, #174921, #2e7d32, #7fa650);
   color: white;
   text-align: center;
 }
@@ -97,12 +80,12 @@ body {
   color: #1f5c2e;
   padding: 8px 16px;
   border-radius: 999px;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 20px;
 }
 
 .hero h2 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   margin-bottom: 20px;
   line-height: 1.1;
 }
@@ -112,33 +95,36 @@ body {
   margin-bottom: 28px;
 }
 
-/* ===============================
-   BOTÕES
-================================ */
-
-.botao-principal {
+.botao-principal,
+.botao-secundario {
   display: inline-block;
   border: none;
-  background: #ffcc29;
-  color: #1f2d1f;
   padding: 14px 24px;
   border-radius: 12px;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 1rem;
-  text-decoration: none;
   cursor: pointer;
   transition: 0.3s;
+  margin: 8px 6px 0 0;
 }
 
-.botao-principal:hover {
+.botao-principal {
+  background: #ffcc29;
+  color: #1f2d1f;
+  text-decoration: none;
+}
+
+.botao-secundario {
+  background: #e5f2df;
+  color: #1f5c2e;
+  border: 2px solid #1f5c2e;
+}
+
+.botao-principal:hover,
+.botao-secundario:hover {
   transform: translateY(-3px);
-  background: #ffd95c;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
-
-/* ===============================
-   SEÇÕES
-================================ */
 
 .secao {
   max-width: 1150px;
@@ -168,15 +154,12 @@ body {
 .destaque > h2,
 .destaque > p,
 .destaque > .cards,
+.destaque > .simulador,
 .destaque > .quiz {
   max-width: 1150px;
   margin-left: auto;
   margin-right: auto;
 }
-
-/* ===============================
-   CARDS
-================================ */
 
 .cards {
   display: grid;
@@ -195,7 +178,11 @@ body {
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.icone {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
 }
 
 .card h3 {
@@ -208,23 +195,43 @@ body {
   color: #3d4d3d;
 }
 
-/* ===============================
-   SIMULADOR
-================================ */
+.indicadores {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.indicador {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.indicador strong {
+  display: block;
+  color: #1f5c2e;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.indicador span {
+  color: #3d4d3d;
+}
 
 .simulador {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 850px;
   background: white;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .simulador label {
   display: block;
   margin-bottom: 22px;
-  font-weight: 800;
+  font-weight: 900;
   color: #1f5c2e;
 }
 
@@ -239,10 +246,6 @@ body {
   color: #2e7d32;
 }
 
-/* ===============================
-   RESULTADOS
-================================ */
-
 .resultado {
   margin-top: 24px;
   padding: 18px;
@@ -253,17 +256,47 @@ body {
   color: #1f2d1f;
 }
 
-/* ===============================
-   QUIZ
-================================ */
+.resultado.excelente {
+  border-left-color: #1f8f3a;
+  background: #e8f8ec;
+}
 
-.quiz {
+.resultado.bom {
+  border-left-color: #7fa650;
+  background: #f1f8e9;
+}
+
+.resultado.regular {
+  border-left-color: #ffcc29;
+  background: #fff9dd;
+}
+
+.resultado.baixo {
+  border-left-color: #c0392b;
+  background: #fdecea;
+}
+
+.caixa-desafio {
   max-width: 850px;
   margin: 0 auto;
   background: white;
+  padding: 28px;
+  border-radius: 18px;
+  border-left: 6px solid #ffcc29;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.caixa-desafio h3 {
+  color: #1f5c2e;
+  margin-bottom: 10px;
+}
+
+.quiz {
+  max-width: 850px;
+  background: white;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .quiz fieldset {
@@ -290,24 +323,16 @@ body {
   margin-right: 8px;
 }
 
-/* ===============================
-   RODAPÉ
-================================ */
-
 .rodape {
   background: #1f5c2e;
   color: white;
   text-align: center;
-  padding: 28px 20px;
+  padding: 30px 20px;
 }
 
 .rodape p {
-  margin: 6px 0;
+  margin: 7px 0;
 }
-
-/* ===============================
-   ACESSIBILIDADE
-================================ */
 
 a:focus,
 button:focus,
@@ -316,11 +341,7 @@ input:focus {
   outline-offset: 3px;
 }
 
-/* ===============================
-   RESPONSIVO
-================================ */
-
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .menu {
     flex-direction: column;
     text-align: center;
@@ -335,6 +356,10 @@ input:focus {
   }
 
   .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .indicadores {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -361,7 +386,8 @@ input:focus {
     font-size: 1.8rem;
   }
 
-  .cards {
+  .cards,
+  .indicadores {
     grid-template-columns: 1fr;
   }
 
@@ -371,7 +397,7 @@ input:focus {
   }
 
   .links-menu {
-    gap: 12px;
-    font-size: 0.95rem;
+    gap: 10px;
+    font-size: 0.9rem;
   }
 }

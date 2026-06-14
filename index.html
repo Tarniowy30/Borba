@@ -23,6 +23,7 @@
         <li><a href="#inicio">Início</a></li>
         <li><a href="#tema">Tema</a></li>
         <li><a href="#tecnologia">Tecnologia</a></li>
+        <li><a href="#impacto">Impacto</a></li>
         <li><a href="#simulador">Simulador</a></li>
         <li><a href="#quiz">Quiz</a></li>
       </ul>
@@ -37,9 +38,9 @@
         <h2>Agro forte, futuro sustentável</h2>
 
         <p>
-          Uma experiência interativa para aprender como a tecnologia,
-          a economia de água, a energia limpa e a preservação ambiental
-          podem transformar a produção no campo.
+          Uma experiência interativa para entender como tecnologia,
+          preservação ambiental e produção responsável podem transformar
+          o futuro do campo.
         </p>
 
         <a href="#simulador" class="botao-principal">
@@ -52,33 +53,36 @@
       <h2>Produzir e preservar é o caminho</h2>
 
       <p class="texto-central">
-        O campo é essencial para a alimentação, a economia e a vida das pessoas.
-        Mas o futuro da agricultura depende do equilíbrio entre produtividade
-        e cuidado com o meio ambiente.
+        O campo é essencial para alimentar a população, movimentar a economia
+        e aproximar campo e cidade. O grande desafio é produzir mais, usando
+        melhor os recursos naturais e protegendo o meio ambiente.
       </p>
 
       <div class="cards">
         <article class="card">
-          <h3>Economia de água</h3>
+          <div class="icone">💧</div>
+          <h3>Água consciente</h3>
           <p>
-            Sistemas de irrigação inteligente ajudam a usar somente a quantidade
-            necessária de água, evitando desperdícios.
+            A irrigação inteligente ajuda a evitar desperdícios e garante que a
+            planta receba água na quantidade correta.
           </p>
         </article>
 
         <article class="card">
-          <h3>Preservação do solo</h3>
+          <div class="icone">🌱</div>
+          <h3>Solo protegido</h3>
           <p>
-            Técnicas como cobertura vegetal, plantio direto e rotação de culturas
-            protegem a terra e melhoram a produção.
+            Cobertura vegetal, rotação de culturas e plantio direto ajudam a
+            manter o solo fértil e saudável.
           </p>
         </article>
 
         <article class="card">
+          <div class="icone">☀️</div>
           <h3>Energia limpa</h3>
           <p>
-            O uso de energia solar no campo pode reduzir custos e diminuir
-            impactos ambientais.
+            A energia solar pode reduzir custos, diminuir impactos ambientais
+            e fortalecer a produção rural.
           </p>
         </article>
       </div>
@@ -88,46 +92,83 @@
       <h2>Tecnologia a favor do campo</h2>
 
       <p class="texto-central">
-        A tecnologia pode ajudar agricultores a produzir mais, desperdiçar menos
-        e cuidar melhor dos recursos naturais.
+        A agricultura moderna pode usar sensores, drones, dados e automação
+        para tomar decisões mais rápidas, econômicas e sustentáveis.
       </p>
 
       <div class="cards">
         <article class="card">
+          <div class="icone">📡</div>
           <h3>Sensores</h3>
           <p>
-            Sensores podem medir umidade do solo, temperatura e necessidade de irrigação.
+            Medem umidade, temperatura e necessidade de irrigação, ajudando o
+            produtor a economizar água.
           </p>
         </article>
 
         <article class="card">
+          <div class="icone">🚁</div>
           <h3>Drones</h3>
           <p>
-            Drones auxiliam no monitoramento das plantações e ajudam a identificar problemas.
+            Monitoram áreas de plantio, identificam falhas e ajudam no cuidado
+            preventivo das plantações.
           </p>
         </article>
 
         <article class="card">
-          <h3>Dados e decisões</h3>
+          <div class="icone">📊</div>
+          <h3>Dados</h3>
           <p>
-            Com dados, o produtor pode tomar decisões mais rápidas, econômicas e sustentáveis.
+            Transformam informações do campo em decisões inteligentes para
+            melhorar produtividade e reduzir desperdícios.
           </p>
         </article>
       </div>
     </section>
 
-    <section id="simulador" class="secao">
+    <section id="impacto" class="secao">
+      <h2>Impactos da Fazenda Sustentável</h2>
+
+      <p class="texto-central">
+        Quando tecnologia e preservação caminham juntas, os resultados aparecem
+        na economia, na natureza e na qualidade de vida.
+      </p>
+
+      <div class="indicadores">
+        <div class="indicador">
+          <strong>+ Economia</strong>
+          <span>Menos desperdício de água e energia</span>
+        </div>
+
+        <div class="indicador">
+          <strong>+ Preservação</strong>
+          <span>Solo, mata e recursos naturais protegidos</span>
+        </div>
+
+        <div class="indicador">
+          <strong>+ Produção</strong>
+          <span>Mais eficiência com decisões baseadas em dados</span>
+        </div>
+
+        <div class="indicador">
+          <strong>+ Futuro</strong>
+          <span>Campo mais forte para as próximas gerações</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="simulador" class="secao destaque">
       <h2>Simulador da Fazenda Sustentável</h2>
 
       <p class="texto-central">
-        Ajuste os níveis abaixo e descubra o índice de sustentabilidade da sua fazenda.
+        Ajuste os níveis abaixo e descubra o índice de sustentabilidade da fazenda.
       </p>
 
       <div class="simulador">
         <label>
           Uso consciente da água:
-          <input type="range" id="agua" min="0" max="100" value="50" />
-          <span id="valorAgua">50</span>%
+          <input type="range" id="agua" min="0" max="100" value="60" />
+          <span id="valorAgua">60</span>%
         </label>
 
         <label>
@@ -138,8 +179,8 @@
 
         <label>
           Preservação da mata:
-          <input type="range" id="mata" min="0" max="100" value="50" />
-          <span id="valorMata">50</span>%
+          <input type="range" id="mata" min="0" max="100" value="55" />
+          <span id="valorMata">55</span>%
         </label>
 
         <label>
@@ -148,13 +189,48 @@
           <span id="valorTecnologia">50</span>%
         </label>
 
+        <label>
+          Cuidado com o solo:
+          <input type="range" id="solo" min="0" max="100" value="60" />
+          <span id="valorSolo">60</span>%
+        </label>
+
+        <label>
+          Redução de agrotóxicos:
+          <input type="range" id="agrotoxicos" min="0" max="100" value="45" />
+          <span id="valorAgrotoxicos">45</span>%
+        </label>
+
         <button type="button" id="btnCalcular" class="botao-principal">
           Calcular sustentabilidade
+        </button>
+
+        <button type="button" id="btnResetar" class="botao-secundario">
+          Reiniciar simulador
         </button>
 
         <div id="resultadoSimulador" class="resultado">
           Ajuste os valores e clique no botão para ver o resultado.
         </div>
+      </div>
+    </section>
+
+    <section class="secao">
+      <h2>Desafio do produtor</h2>
+
+      <p class="texto-central">
+        Imagine uma propriedade rural que precisa produzir alimentos, economizar
+        água, proteger o solo e preservar a mata. O produtor precisa escolher
+        tecnologias e práticas sustentáveis para equilibrar produção e meio ambiente.
+      </p>
+
+      <div class="caixa-desafio">
+        <h3>Missão</h3>
+        <p>
+          Use o simulador para encontrar um equilíbrio entre tecnologia,
+          preservação e produção consciente. Quanto maior o índice, mais preparada
+          a fazenda estará para o futuro.
+        </p>
       </div>
     </section>
 
@@ -222,8 +298,40 @@
           </label>
         </fieldset>
 
+        <fieldset>
+          <legend>5. Qual é uma vantagem dos drones na agricultura?</legend>
+
+          <label>
+            <input type="radio" name="q5" value="correto" />
+            Monitorar plantações e identificar problemas
+          </label>
+
+          <label>
+            <input type="radio" name="q5" value="errado" />
+            Substituir totalmente o cuidado com o solo
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>6. O que representa uma fazenda sustentável?</legend>
+
+          <label>
+            <input type="radio" name="q6" value="errado" />
+            Produzir sem se preocupar com o meio ambiente
+          </label>
+
+          <label>
+            <input type="radio" name="q6" value="correto" />
+            Produzir com equilíbrio entre economia, tecnologia e preservação
+          </label>
+        </fieldset>
+
         <button type="button" id="btnCorrigirQuiz" class="botao-principal">
           Corrigir quiz
+        </button>
+
+        <button type="button" id="btnLimparQuiz" class="botao-secundario">
+          Tentar novamente
         </button>
 
         <div id="resultadoQuiz" class="resultado">
@@ -244,17 +352,10 @@
   </main>
 
   <footer class="rodape">
-    <p>
-      Projeto desenvolvido para o Concurso Agrinho 2026
-    </p>
-
-    <p>
-      Tema: Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente
-    </p>
-
-    <p>
-      Tecnologias utilizadas: HTML, CSS e JavaScript
-    </p>
+    <p><strong>Projeto desenvolvido para o Concurso Agrinho 2026</strong></p>
+    <p>Tema: Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente</p>
+    <p>Aluno: ____________________ | Escola: ____________________ | Professor(a): ____________________</p>
+    <p>Tecnologias utilizadas: HTML, CSS e JavaScript</p>
   </footer>
 
   <script src="js/script.js"></script>

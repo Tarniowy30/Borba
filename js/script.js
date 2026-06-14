@@ -1,95 +1,148 @@
-// ===============================
-// Projeto Borba - Agrinho 2026
-// JavaScript principal
-// ===============================
-
-// Espera o HTML carregar completamente
 document.addEventListener("DOMContentLoaded", function () {
-  // Elementos do simulador
-  const agua = document.getElementById("agua");
-  const energia = document.getElementById("energia");
-  const mata = document.getElementById("mata");
-  const tecnologiaCampo = document.getElementById("tecnologiaCampo");
-
-  const valorAgua = document.getElementById("valorAgua");
-  const valorEnergia = document.getElementById("valorEnergia");
-  const valorMata = document.getElementById("valorMata");
-  const valorTecnologia = document.getElementById("valorTecnologia");
+  const campos = [
+    {
+      input: document.getElementById("agua"),
+      valor: document.getElementById("valorAgua")
+    },
+    {
+      input: document.getElementById("energia"),
+      valor: document.getElementById("valorEnergia")
+    },
+    {
+      input: document.getElementById("mata"),
+      valor: document.getElementById("valorMata")
+    },
+    {
+      input: document.getElementById("tecnologiaCampo"),
+      valor: document.getElementById("valorTecnologia")
+    },
+    {
+      input: document.getElementById("solo"),
+      valor: document.getElementById("valorSolo")
+    },
+    {
+      input: document.getElementById("agrotoxicos"),
+      valor: document.getElementById("valorAgrotoxicos")
+    }
+  ];
 
   const btnCalcular = document.getElementById("btnCalcular");
+  const btnResetar = document.getElementById("btnResetar");
   const resultadoSimulador = document.getElementById("resultadoSimulador");
 
-  // Elementos do quiz
   const btnCorrigirQuiz = document.getElementById("btnCorrigirQuiz");
+  const btnLimparQuiz = document.getElementById("btnLimparQuiz");
   const resultadoQuiz = document.getElementById("resultadoQuiz");
+  const formQuiz = document.getElementById("formQuiz");
 
-  // Atualiza os números dos controles do simulador
   function atualizarValores() {
-    valorAgua.textContent = agua.value;
-    valorEnergia.textContent = energia.value;
-    valorMata.textContent = mata.value;
-    valorTecnologia.textContent = tecnologiaCampo.value;
+    campos.forEach(function (campo) {
+      campo.valor.textContent = campo.input.value;
+    });
   }
 
-  agua.addEventListener("input", atualizarValores);
-  energia.addEventListener("input", atualizarValores);
-  mata.addEventListener("input", atualizarValores);
-  tecnologiaCampo.addEventListener("input", atualizarValores);
+  campos.forEach(function (campo) {
+    campo.input.addEventListener("input", atualizarValores);
+  });
 
-  // Calcula a sustentabilidade da fazenda
-  function calcularSustentabilidade() {
-    const notaAgua = Number(agua.value);
-    const notaEnergia = Number(energia.value);
-    const notaMata = Number(mata.value);
-    const notaTecnologia = Number(tecnologiaCampo.value);
+  function calcularMedia() {
+    let soma = 0;
 
-    const media = Math.round(
-      (notaAgua + notaEnergia + notaMata + notaTecnologia) / 4
-    );
+    campos.forEach(function (campo) {
+      soma += Number(campo.input.value);
+    });
 
-    let classificacao = "";
-    let recomendacao = "";
+    return Math.round(soma / campos.length);
+  }
 
+  function definirClassificacao(media) {
     if (media >= 85) {
-      classificacao = "Excelente";
-      recomendacao =
-        "Sua fazenda está muito sustentável. Continue investindo em tecnologia, preservação e uso consciente dos recursos naturais.";
-    } else if (media >= 70) {
-      classificacao = "Boa";
-      recomendacao =
-        "Sua fazenda está no caminho certo. Para melhorar ainda mais, aumente a preservação ambiental e reduza desperdícios.";
-    } else if (media >= 50) {
-      classificacao = "Regular";
-      recomendacao =
-        "Sua fazenda precisa de melhorias. Invista em irrigação inteligente, energia limpa e cuidado com o solo.";
-    } else {
-      classificacao = "Baixa";
-      recomendacao =
-        "A sustentabilidade está baixa. É importante repensar o uso da água, proteger a mata e usar mais tecnologia no campo.";
+      return {
+        nome: "Excelente",
+        classe: "excelente",
+        impacto: "baixo impacto ambiental",
+        economia: "alta economia de recursos",
+        recomendacao:
+          "A fazenda está muito sustentável. Continue mantendo a preservação da mata, o cuidado com o solo e o uso de tecnologia."
+      };
     }
+
+    if (media >= 70) {
+      return {
+        nome: "Boa",
+        classe: "bom",
+        impacto: "impacto ambiental moderado",
+        economia: "boa economia de recursos",
+        recomendacao:
+          "A fazenda está no caminho certo. Para melhorar, aumente o uso de energia limpa e reduza desperdícios."
+      };
+    }
+
+    if (media >= 50) {
+      return {
+        nome: "Regular",
+        classe: "regular",
+        impacto: "impacto ambiental em atenção",
+        economia: "economia de recursos ainda limitada",
+        recomendacao:
+          "A fazenda precisa evoluir. Invista em irrigação inteligente, proteção do solo e preservação ambiental."
+      };
+    }
+
+    return {
+      nome: "Baixa",
+      classe: "baixo",
+      impacto: "alto risco ambiental",
+      economia: "baixo aproveitamento dos recursos",
+      recomendacao:
+        "A sustentabilidade está baixa. É necessário rever o uso da água, proteger a mata e adotar tecnologias sustentáveis."
+    };
+  }
+
+  function calcularSustentabilidade() {
+    const media = calcularMedia();
+    const resultado = definirClassificacao(media);
+
+    resultadoSimulador.className = "resultado " + resultado.classe;
 
     resultadoSimulador.innerHTML = `
       <strong>Índice de sustentabilidade:</strong> ${media}%<br>
-      <strong>Classificação:</strong> ${classificacao}<br>
-      <strong>Recomendação:</strong> ${recomendacao}
+      <strong>Classificação:</strong> ${resultado.nome}<br>
+      <strong>Impacto ambiental:</strong> ${resultado.impacto}<br>
+      <strong>Economia de recursos:</strong> ${resultado.economia}<br>
+      <strong>Recomendação:</strong> ${resultado.recomendacao}
     `;
   }
 
+  function resetarSimulador() {
+    const valoresIniciais = [60, 50, 55, 50, 60, 45];
+
+    campos.forEach(function (campo, index) {
+      campo.input.value = valoresIniciais[index];
+    });
+
+    atualizarValores();
+
+    resultadoSimulador.className = "resultado";
+    resultadoSimulador.innerHTML =
+      "Ajuste os valores e clique no botão para ver o resultado.";
+  }
+
   btnCalcular.addEventListener("click", calcularSustentabilidade);
+  btnResetar.addEventListener("click", resetarSimulador);
 
-  // Corrige o quiz
   function corrigirQuiz() {
-    const respostas = ["q1", "q2", "q3", "q4"];
+    const perguntas = ["q1", "q2", "q3", "q4", "q5", "q6"];
     let pontos = 0;
-    let perguntasRespondidas = 0;
+    let respondidas = 0;
 
-    respostas.forEach(function (pergunta) {
+    perguntas.forEach(function (pergunta) {
       const respostaSelecionada = document.querySelector(
         `input[name="${pergunta}"]:checked`
       );
 
       if (respostaSelecionada) {
-        perguntasRespondidas++;
+        respondidas++;
 
         if (respostaSelecionada.value === "correto") {
           pontos++;
@@ -97,40 +150,54 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    if (perguntasRespondidas < respostas.length) {
-      resultadoQuiz.innerHTML = `
-        <strong>Atenção:</strong> responda todas as perguntas antes de corrigir o quiz.
-      `;
+    if (respondidas < perguntas.length) {
+      resultadoQuiz.className = "resultado regular";
+      resultadoQuiz.innerHTML =
+        "<strong>Atenção:</strong> responda todas as perguntas antes de corrigir o quiz.";
       return;
     }
 
     let mensagem = "";
 
-    if (pontos === 4) {
-      mensagem = "Excelente! Você entende muito bem sobre agro sustentável.";
-    } else if (pontos === 3) {
+    if (pontos === 6) {
+      mensagem = "Excelente! Você compreende muito bem o agro sustentável.";
+      resultadoQuiz.className = "resultado excelente";
+    } else if (pontos >= 4) {
       mensagem = "Muito bom! Você está no caminho certo.";
-    } else if (pontos === 2) {
-      mensagem = "Bom começo! Ainda dá para aprender mais sobre sustentabilidade.";
+      resultadoQuiz.className = "resultado bom";
+    } else if (pontos >= 2) {
+      mensagem = "Bom começo! Ainda é possível aprender mais.";
+      resultadoQuiz.className = "resultado regular";
     } else {
       mensagem =
         "Continue estudando. O campo sustentável depende de escolhas conscientes.";
+      resultadoQuiz.className = "resultado baixo";
     }
 
     resultadoQuiz.innerHTML = `
-      <strong>Resultado:</strong> você acertou ${pontos} de ${respostas.length} perguntas.<br>
+      <strong>Resultado:</strong> você acertou ${pontos} de ${perguntas.length} perguntas.<br>
       ${mensagem}
       <br><br>
       <strong>Aprendizado:</strong><br>
-      - A irrigação inteligente ajuda a economizar água.<br>
-      - A energia solar reduz impactos ambientais.<br>
-      - Sensores ajudam o produtor a tomar decisões com dados.<br>
-      - A cobertura vegetal e a rotação de culturas protegem o solo.
+      💧 A irrigação inteligente ajuda a economizar água.<br>
+      ☀️ A energia solar reduz impactos ambientais.<br>
+      📡 Sensores ajudam o produtor a tomar decisões com dados.<br>
+      🌱 A cobertura vegetal e a rotação de culturas protegem o solo.<br>
+      🚁 Drones auxiliam no monitoramento das plantações.<br>
+      🌎 Uma fazenda sustentável equilibra produção, tecnologia e preservação.
     `;
   }
 
-  btnCorrigirQuiz.addEventListener("click", corrigirQuiz);
+  function limparQuiz() {
+    formQuiz.reset();
 
-  // Inicializa os valores na tela
+    resultadoQuiz.className = "resultado";
+    resultadoQuiz.innerHTML =
+      "Responda às perguntas e clique em corrigir.";
+  }
+
+  btnCorrigirQuiz.addEventListener("click", corrigirQuiz);
+  btnLimparQuiz.addEventListener("click", limparQuiz);
+
   atualizarValores();
 });
